@@ -1,0 +1,21 @@
+server:
+  port: 8080
+
+titan:
+  github:
+    # Optional: set GITHUB_TOKEN env var to increase rate limit (5000 req/hr vs 60)
+    token: ${GITHUB_TOKEN:}
+    api-base: https://api.github.com
+    raw-base: https://raw.githubusercontent.com
+  osv:
+    api-base: https://api.osv.dev/v1
+    # Max deps per OSV batch request (OSV limit is 1000)
+    batch-size: 500
+
+spring:
+  codec:
+    max-in-memory-size: 10MB
+  jackson:
+    default-property-inclusion: non_null
+    serialization:
+      write-dates-as-timestamps: false
